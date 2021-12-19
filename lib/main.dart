@@ -9,65 +9,34 @@ class XylophoneApp extends StatelessWidget {
     player.play("note$num.wav");
   }
 
+  Widget byKey({Color color, int soundKey}) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playLocal(soundKey);
+        },
+        child: Text('play $soundKey'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                FlatButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    playLocal(1);
-                  },
-                  child: Text('play 1'),
-                ),
-                FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    playLocal(2);
-                  },
-                  child: Text('play 2'),
-                ),
-                FlatButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    playLocal(3);
-                  },
-                  child: Text('play 3'),
-                ),
-                FlatButton(
-                  color: Colors.yellow,
-                  onPressed: () {
-                    playLocal(4);
-                  },
-                  child: Text('play 4'),
-                ),
-                FlatButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    playLocal(5);
-                  },
-                  child: Text('play 5'),
-                ),
-                FlatButton(
-                  color: Colors.teal,
-                  onPressed: () {
-                    playLocal(6);
-                  },
-                  child: Text('play 6'),
-                ),
-                FlatButton(
-                  color: Colors.purple,
-                  onPressed: () {
-                    playLocal(7);
-                  },
-                  child: Text('play 7'),
-                ),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              byKey(color: Colors.red, soundKey: 1),
+              byKey(color: Colors.blue, soundKey: 2),
+              byKey(color: Colors.orange, soundKey: 3),
+              byKey(color: Colors.yellow, soundKey: 4),
+              byKey(color: Colors.green, soundKey: 5),
+              byKey(color: Colors.teal, soundKey: 6),
+              byKey(color: Colors.purple, soundKey: 7),
+            ],
           ),
         ),
       ),
